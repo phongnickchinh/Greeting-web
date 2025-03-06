@@ -1,42 +1,176 @@
+@font-face {
+  font-family: 'holidays';
+  src: url('./assets/font/holiadays.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #fde2da;
+}
+
+.landing-container {
+  width: 295px;
+  margin: 0 0 0 0;
+  height: 1791px;
+  background-color: #ffffff;
+  overflow-y: auto;
+  position: relative;
+}
+
+
+
+.header {
+  height: 45px;
+  padding: 0;
   text-align: center;
+  /* background-color: #ffffff; */
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+@media screen and (min-width: 1024px) {
+
+  
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.header-cloud {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+  /* nền trong suốt */
+  background-color: rgba(255, 255, 255, 0);
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (min-width: 1024px) {
+  .header-cloud img {
+    width: 200%;
+    height: 200%;
   }
-  to {
-    transform: rotate(360deg);
+  
+}
+
+.header-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Căn giữa logo */
+  width: 100%;
+}
+.header-logo img {
+  width: 22%;
+}
+/* .header-cloud img {
+  width: 100%;
+} */
+
+
+.main-content {
+}
+
+.section-1 {
+  margin-top: -45px;
+  position: relative;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.image-container {
+  position: relative;
+}
+
+.image-container img {
+  width: 468px;
+  display: block;
+}
+
+.overlay-text {
+  position: absolute;
+  /* You can adjust these values to position the text exactly where you want */
+  top: 50%;  
+  left: 50%;
+  transform: translate(-50%, -190%);
+  color: #ffffff;  /* Adjust text color as needed */
+  text-align: center;
+  font-family: 'holidays', sans-serif;
+  font-size: 16px;  /* Adjust font size as needed */
+  /* Add more styling as needed */
+}
+
+@media screen and (min-width: 400px) {
+  .landing-container {
+    width: calc(295px * 1.2);
+    height: calc(1791px * 1.2);
+  }
+
+  .image-container img {
+    width: calc(468px * 1.2);
+  }
+
+  .overlay-text {
+    font-size: 18px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -190%);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media screen and (min-width: 768px) {
+  .landing-container {
+    width: calc(295px * 1.5);
+    height: calc(1791px * 1.5);
+  }
+
+  .image-container img {
+    width: calc(468px * 1.5);
+  }
+
+  .overlay-text {
+    font-size: 20px;
+    top: 50%;
+    left: 60%;
+    transform: translate(-75%, -230%);
   }
 }
 
-.card {
-  padding: 2em;
-}
+@media screen and (min-width: 1024px) {
+  .landing-container {
+    width: calc(295px * 2);
+    height: calc(1791px * 2);
+  }
+  .header {
+    height: 90px;
+  }
 
-.read-the-docs {
-  color: #888;
+  .section-1 {
+    margin-top: -90px;
+  }
+
+  .image-container img {
+    width: calc(468px * 2);
+  }
+
+  .overlay-text {
+    font-size: 24px;
+    top: 50%;
+    left: 60%;
+    transform: translate(-75%, -250%);
+  }
 }

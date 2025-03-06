@@ -1,34 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
+import cloudImage from './assets/images/Cloud.png'; // Make sure the path is correct
+import logo from './assets/images/Logo.png'; // Make sure the path is correct
+import duyn1 from './assets/images/duyn1.jpg'; // Make sure the path is correct
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="landing-container">
+      <div className="header">
+        <div className="header-cloud">
+          <img src={cloudImage} alt="Cloud"  />
+        </div>
+        < div className="header-logo">
+          <img src={logo} alt="Logo"/>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      <main className="main-content">
+        <section className='section-1'>
+          <div className="image-container">
+            <img src={duyn1} alt="Duyenxinhgai" />
+            <p className="overlay-text">Chúc mừng ngày quốc tế phụ nữ, <br/> bé iu hãy lướt chậm xuống dưới để khám phá tấm thiệp này nhé!!</p>
+          </div>
+        </section>
+        <section className='section-2'>
+        </section>
+        <section className='section-3'>
+        </section>
+        <section className='section-4'>
+        </section>
+        <section className='section-5'>
+        </section>
+      </main>
+    </div>
   )
 }
 
