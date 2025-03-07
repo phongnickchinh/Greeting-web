@@ -40,10 +40,6 @@
   justify-content: center;
   overflow: hidden;
 }
-@media screen and (min-width: 1024px) {
-
-  
-}
 
 .header-cloud {
   position: absolute;
@@ -57,8 +53,8 @@
 }
 @media screen and (min-width: 1024px) {
   .header-cloud img {
-    width: 200%;
-    height: 200%;
+    width: 1098px;
+    height: 330px;
   }
   
 }
@@ -73,14 +69,12 @@
 .header-logo img {
   width: 22%;
 }
-/* .header-cloud img {
-  width: 100%;
-} */
 
 
 .main-content {
 }
 
+/* section 1 setting */
 .section-1 {
   margin-top: -45px;
   position: relative;
@@ -89,7 +83,7 @@
   justify-content: center;
   display: flex;
   flex-direction: column;
-  z-index: 1;
+  z-index: 10;
 }
 
 .image-container {
@@ -114,6 +108,140 @@
   /* Add more styling as needed */
 }
 
+/* middle section setting */
+/* tôi muốn các thẻ con của thẻ này được căn giữa màn hình */
+.middle-section {
+  margin-top: -15px;
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  height: 30px;
+}
+
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+.overlay {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  /* làm mờ viền */
+  /* box-shadow: 0 0 10px 10px #FCECE3; */
+  animation: floatUpDown 2s cubic-bezier(0.6, 0.05, 0.2, 0.95) infinite;
+}
+
+.overlay img {
+  width: 94px;
+  display: block;
+}
+
+
+/* section 2 setting */
+.section-2 {
+  margin-top: -40px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  z-index: 20;
+}
+.image-container-2 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.image-container-2 img {
+  width: 312px;
+  display: block;
+  z-index: 3;
+}
+
+.content {
+  display: flex;
+  position: absolute;
+  flex-direction: column; /* Xếp các thẻ theo chiều dọc */
+  gap: 20px; /* Khoảng cách giữa các thẻ con */
+}
+
+.content-box {
+  z-index: 4;
+  display: flex;
+}
+.content div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content-box .img1 {
+  width: 175px;
+}
+.content-box .img2 {
+  width:  71px;
+}
+
+/* section 3 setting */
+
+.section-3 {
+  margin-top: -40px;
+  z-index: 1;
+  position: relative;
+  width: 100%;
+  height: 375px;
+  overflow: hidden;
+  display: grid;
+  place-items: center; /* Căn giữa cả ngang và dọc */
+}
+
+.section-3 img {
+  position: absolute;
+  bottom: 0; /* Gắn ảnh vào đáy section */
+  left: 50%;
+  transform: translateX(-50%);
+  max-height: 750px; /* Giới hạn chiều cao ảnh */
+  width: auto;
+  object-fit: cover; /* Ảnh sẽ không bị méo khi thay đổi kích thước */
+  transition: max-height 0.5s ease;
+
+}
+
+.caro-box {
+  width: 237px;
+  height: 239px;
+  margin-top: 68px;
+  position: absolute;
+}
+.caro-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.secret-gift {
+  display: inline-block;
+  width: 205px;
+  height: 205px;
+  margin-top: 68px;
+  position: absolute;
+}
+.secret-gift img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 @media screen and (min-width: 400px) {
   .landing-container {
     width: calc(295px * 1.2);
@@ -129,6 +257,40 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -190%);
+  }
+
+  .middle-section {
+    margin-top: -18px;
+    height: 36px;
+  }
+
+  .overlay img {
+    width: 112px;
+  }
+
+  .section-2 {
+    margin-top: -50px;
+  }
+
+  .image-container-2 img {
+    width: calc(312px * 1.2);
+  }
+
+  .content {
+    gap: 20px*1.2;
+  }
+
+  .content-box .img1 {
+    width: 210px;
+  }
+  .content-box .img2 {
+    width:  85px;
+  }
+
+  .section-3 {
+
+    margin-top: -50px;
+    height: 450px;
   }
 }
 
@@ -148,6 +310,42 @@
     left: 60%;
     transform: translate(-75%, -230%);
   }
+
+  .middle-section {
+    margin-top: -20px;
+    height: 40px;
+  }
+
+  .overlay img {
+    width: 141px;
+  }
+  
+
+  .section-2 {
+    margin-top: -60px;
+  }
+
+  .image-container-2 img {
+    width: calc(312px * 1.5);
+  }
+
+  .content {
+    gap: 20px*1.5;
+  }
+
+  .content-box .img1 {
+    width: 262px;
+  }
+
+  .content-box .img2 {
+    width:  106px;
+  }
+
+  .section-3 {
+    margin-top: -60px;
+    height: 525px;
+  }
+
 }
 
 @media screen and (min-width: 1024px) {
@@ -172,5 +370,49 @@
     top: 50%;
     left: 60%;
     transform: translate(-75%, -250%);
+  }
+
+  .middle-section {
+    margin-top: -30px;
+    height: 60px;
+  }
+
+  .overlay img {
+    width: 188px;
+  }
+
+  .section-2 {
+    margin-top: -80px;
+  }
+  .image-container-2 img {
+    width: calc(312px * 2);
+  }
+
+  .content {
+    gap: 20px*2;
+  }
+
+  .content-box .img1 {
+    width: 350px;
+  }
+
+  .content-box .img2 {
+    width:  142px;
+  }
+
+  .section-3 {
+    margin-top: - 80px;
+    height: calc(375px * 2);
+  }
+
+  .caro-box {
+    width: calc(237px*2);
+    height: calc(239px*2);
+    margin-top: calc(68px*2);
+  }
+  .secret-gift {
+    width: calc(205px*2);
+    height: calc(205px*2);
+    margin-top: calc(68px*2);
   }
 }
