@@ -13,10 +13,11 @@ import prism from './assets/images/prism.png';
 import white from './assets/images/white.png';
 import phongkeo from './assets/images/phongkeo.png';
 import banco from './assets/images/banco.png';
+import gradient from './assets/images/gradient.png';
 
 import React from "react";
-import Board from "./Board";
-
+import Board from "./components/Caro/Board";
+import ScrollingImages from "./components/scrollingImages/ScrollingImages";
 
 function App() {
   return (
@@ -33,7 +34,7 @@ function App() {
         <section className='section-1'>
           <div className="image-container">
             <img src={duyn1} alt="Duyenxinhgai" />
-            <p className="overlay-text">Chúc mừng ngày quốc tế phụ nữ, <br/> bé iu hãy lướt chậm xuống dưới để khám phá tấm thiệp này nhé!!</p>
+            <p className="overlay-text">Chúc mừng ngày quốc tế phụ nữ, <br/> bé iu hãy lướt chậm xuống dưới để<br/> khám phá tấm thiệp này nhé!!</p>
           </div>
         </section>
         <section className='middle-section'>
@@ -94,9 +95,23 @@ function App() {
             <Board />
           </div>
         </section>
+        <section className='middle-section'>
+          <div className="gradient">
+            <img src={gradient} alt="gradient" />
+            <p className="gradient-overlay-text">🌷🌷 Chuỗi ảnh yêu thích của anh 🌷🌷</p>
+          </div>
+        </section>
         <section className='section-4'>
+          <ScrollingImages />
+        </section>
+        <section className='middle-section'>
+          <div className="gradient">
+            <img src={gradient} alt="gradient" />
+            <p className="gradient-overlay-text">🌷Bấm vào icon máy ảnh để photobooth🌷</p>
+          </div>
         </section>
         <section className='section-5'>
+          
         </section>
       </main>
     </div>

@@ -1,0 +1,44 @@
+    .scrolling-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    }
+
+    .scrolling-track {
+    display: flex;
+    animation: scroll 15s linear infinite; /* Chạy ngang liên tục */
+    }
+
+    .scrolling-img {
+    width: 100%;
+    height: 168px;
+    object-fit: cover;
+    }
+    @media screen and (min-width: 400px) {
+    .scrolling-img {
+        height: calc(168px * 1.2);
+    }
+    }
+
+    @media screen and (min-width: 768px) {
+    .scrolling-img {
+        height: calc(168px * 1.5);
+    }
+    }
+
+    @media screen and (min-width: 1024px) {
+    .scrolling-img {
+        height: calc(168px * 2);
+    }
+    }
+
+    /* Animation chạy ngang */
+    @keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%); /* Dịch 50% để quay vòng */
+    }
+    }
