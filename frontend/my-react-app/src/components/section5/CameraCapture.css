@@ -1,0 +1,31 @@
+.camera-fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .video-feed {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .capture-button {
+    position: absolute;
+    bottom: 20px;
+    background: red;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  

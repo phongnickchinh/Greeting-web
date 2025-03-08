@@ -2,6 +2,7 @@ import './App.css';
 import './Animation.css';
 
 import backgroundmusic from './assets/audio/background.mp3';
+import winSound from './assets/audio/tada.mp3';
 
 import cloudImage from './assets/images/Cloud.png'; // Make sure the path is correct
 import logo from './assets/images/Logo.png'; // Make sure the path is correct
@@ -17,6 +18,7 @@ import flower from './assets/images/flower.png';
 import heart from './assets/images/heart.png';
 import down_here from './assets/images/Down-here.png';
 import letplay from './assets/images/letplay.png';
+import try_again from './assets/images/Try Again.png';
 import prism from './assets/images/prism.png';
 import white from './assets/images/white.png';
 import phongkeo from './assets/images/phongkeo.png';
@@ -27,25 +29,75 @@ import last_happy from './assets/images/last_happy.png';
 
 
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+import { useRef } from "react";
+
 import Board from "./components/Caro/Board";
 import ScrollingImages from "./components/scrollingImages/ScrollingImages";
 import Section5 from "./components/section5/Photobooth";
+import Firework from './components/firework/Firework';
+
 
 function App() {
 
   const [resetState, setResetGame] = React.useState(false);
+  const [isBoardEmpty, setIsBoardEmpty] = useState(true); // Mặc định bàn cờ trống
+  const [isXwinner, setisXwinner] = useState(false);
 
   const handleReset = () => {
       setResetGame(prev => !prev); // Toggle để reset game
   };
+  
+
+  const handleBoardStateChange = (isEmpty) => {
+      setIsBoardEmpty(isEmpty);
+  };
+
+  const handleXwin = (hasXWon) => {
+    setisXwinner(hasXWon);
+  };
+
+  useEffect(() => {
+    if (isXwinner) {
+        const winAudio = new Audio(winSound);
+        winAudio.play();
+    }
+  }, [isXwinner]);
+
+
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+      const playAudio = () => {
+          if (audioRef.current) {
+              audioRef.current.muted = true;  // Ban đầu để mute
+              audioRef.current.play().then(() => {
+                  audioRef.current.muted = false;  // Sau đó bỏ mute
+              }).catch(error => console.log("Autoplay bị chặn:", error));
+          }
+      };
+
+      playAudio();  // Gọi hàm phát nhạc ngay khi trang load
+
+      document.addEventListener("click", playAudio, { once: true }); // Phòng trường hợp vẫn bị chặn
+
+      return () => {
+          document.removeEventListener("click", playAudio);
+      };
+  }, []);
+
 
 
   return (
     
     <div className="landing-container">
-      {/* <audio autoPlay loop>
-        <source src={backgroundmusic} type="audio/mp3" />
-      </audio> */}
+        <audio ref={audioRef} loop>
+            <source src={backgroundmusic} type="audio/mp3" />
+        </audio>
+        {/* <audio loop>
+            <source src={backgroundmusic} type="audio/mp3" />
+        </audio> */}
       <div className="header">
         <div className="header-cloud">
           <img src={cloudImage} alt="Cloud"  />
@@ -110,19 +162,25 @@ function App() {
         </section>
         <section className='section-3'>
           <div className='letplay' onClick={handleReset} >
-          {/* <button onClick={() => alert("Nút này có hoạt động!")}>Test</button> */}
-
-
-            <img src={letplay} alt="letplay" />
+            <img id="letplay" src={isBoardEmpty ? letplay : try_again} alt="Game Status" />
           </div>
           <img src={prism} alt="dsddd" />
-          <img src={white} alt="" />
+          <img src={white} alt="" className='while-layer'/>
           <div className='secret-gift'>
+            {isXwinner && <Firework/>}
             <img src={phongkeo} alt="" />
           </div>
           <div className='caro-box'>
             <img src={banco} alt="" />
-            <Board resetState={resetState} />
+            <Board resetState={resetState} onBoardStateChange={handleBoardStateChange} onXwin={handleXwin} />
+            {isXwinner && (
+                <>
+                    <style>
+                        {`.letplay { display: none; } .white-layer { display: none; } .caro-box { display: none; }`}
+                    </style>
+                </>
+            )}
+
           </div>
         </section>
         <section className='middle-section'>
@@ -137,7 +195,7 @@ function App() {
         <section className='middle-section'>
           <div className="gradient">
             <img src={gradient} alt="gradient" />
-            <p className="gradient-overlay-text">🌷Bấm vào icon máy ảnh để photobooth🌷</p>
+            <p className="gradient-overlay-text">🌷Photobooth not ready yet😢, chờ nhé🌷</p>
           </div>
         </section>
         <Section5 />
