@@ -1,4 +1,6 @@
 import './App.css';
+import './Animation.css';
+
 import cloudImage from './assets/images/Cloud.png'; // Make sure the path is correct
 import logo from './assets/images/Logo.png'; // Make sure the path is correct
 import duyn1 from './assets/images/duyn1.jpg'; // Make sure the path is correct
@@ -14,10 +16,14 @@ import white from './assets/images/white.png';
 import phongkeo from './assets/images/phongkeo.png';
 import banco from './assets/images/banco.png';
 import gradient from './assets/images/gradient.png';
+import last_layout from './assets/images/last_layout.png';
+import last_happy from './assets/images/last_happy.png';
+
 
 import React from "react";
 import Board from "./components/Caro/Board";
 import ScrollingImages from "./components/scrollingImages/ScrollingImages";
+import Section5 from "./components/section5/Photobooth";
 
 function App() {
   return (
@@ -53,7 +59,7 @@ function App() {
                   <img src={hcn} alt="background-loichuc" className='img1' />
                 </div>
                 <div>
-                  <img src={sun} alt="anh_hanh_phuc" className='img2'/>
+                  <img src={sun} alt="anh_hanh_phuc" className='img2' id="sun"/>
                 </div>
               </div>
               <div className='content-box'>
@@ -110,9 +116,20 @@ function App() {
             <p className="gradient-overlay-text">🌷Bấm vào icon máy ảnh để photobooth🌷</p>
           </div>
         </section>
-        <section className='section-5'>
-          
+        <Section5 />
+        <section className='section-6'>
+          <div className='section6-back'>
+            <img src={last_layout} alt="" />
+          </div>
+          <div className='top-layer'>
+            <div>
+            </div>
+            <img src={last_happy} alt="" />
+            <div>
+            </div>
+          </div>
         </section>
+
       </main>
     </div>
   )
