@@ -5,7 +5,8 @@
     grid-template-rows: repeat(3, 1fr);
     width: 100%;
     height: 100%;
-    border: 2px solid black;
+    aspect-ratio: 1;
+    /* border: 2px solid black; */
 }
 
 .cell {
@@ -15,15 +16,46 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    border: 1px solid black;
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer; /* Cho phép click */
-    -webkit-user-select: none; /* Không cho bôi đen */
-    user-select: none; /* Không cho bôi đen */
+    /* border: 1px solid black; */
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
     transition: background 0.3s;
+    position: relative; /* Để căn chỉnh ảnh chính xác */
+    overflow: hidden; /* Tránh ảnh bị tràn */
 }
 
-.cell:hover {
-    background: rgba(0, 0, 0, 0.1);
+.cell img {
+    width: 70%;  /* Điều chỉnh kích thước ảnh */
+    height: auto; /* Đảm bảo tỷ lệ ảnh không bị méo */
+    object-fit: contain;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Canh giữa ảnh hoàn hảo */
 }
+
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .reset-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .reset-button:hover {
+    background-color: #0056b3;
+  }
+  

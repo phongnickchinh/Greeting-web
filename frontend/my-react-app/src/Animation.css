@@ -1,0 +1,57 @@
+
+
+
+@keyframes rotateSun {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 10px; /* Giúp giảm tốc độ cảm nhận */
+}
+
+body {
+    overflow-y: scroll;
+    will-change: transform;
+}
+
+
+#sun {
+    animation: rotateSun 10s linear infinite; /* Quay 1 vòng trong 10s */
+    transform-origin: center; /* Xoay quanh tâm */
+}
+
+/* hiệu ứng xoay nhẹ quanh trung điểm của cạnh đáy thẻ */
+@keyframes floatUpDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes wave {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(3deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* hiệu ứng lắc lắc nhẹ nhàng */
+#board, #heart, #flower{
+    transform-origin: bottom center; /* Điểm xoay là đáy */
+    animation: wave 1.5s infinite linear;
+
+}
+
+
+
+
+

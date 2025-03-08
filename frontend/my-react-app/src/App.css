@@ -34,7 +34,7 @@
   margin: 0 0 0 0;
   height: 1791px;
   background-color: #ffffff;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   position: relative;
 }
 
@@ -125,6 +125,30 @@
   font-size: 16px;  /* Adjust font size as needed */
   /* Add more styling as needed */
 }
+
+.content-box {
+  position: relative; /* Đặt làm khung chứa */
+  display: inline-block;
+}
+.content-box p {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  transform: translate(-50%, -50%); /* Canh giữa chữ */
+  color: white; /* Màu chữ */
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'holidays', sans-serif;
+  text-align: center;
+  width: 90%;
+  z-index: 2; /* Đảm bảo chữ hiển thị trên ảnh */
+}
+
+.img1 {
+  width: 100%;
+  display: block;
+}
+
 
 /* middle section setting */
 /* tôi muốn các thẻ con của thẻ này được căn giữa màn hình */
@@ -237,6 +261,32 @@
 
 }
 
+.letplay {
+  z-index: 30;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 10%;
+  top: 15%;
+}
+.letplay:active {
+  transform: scale(0.95); /* Hiệu ứng nhấn xuống */
+}
+
+.section-3 .letplay img {
+  z-index: 100;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  object-fit: cover;
+  transition: max-height 0.5s ease;
+  pointer-events: none;
+}
+
 .caro-box {
   width: 237px;
   height: 239px;
@@ -324,8 +374,9 @@
 }
 
 .top-layer {
-  position: relative;
+  position: absolute;
   display: flex;
+  bottom:0;
   width: 100%;
   height: 100%;
   object-fit:cover;
