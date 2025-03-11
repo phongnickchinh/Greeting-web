@@ -2,17 +2,17 @@ import { StrictMode, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
+import sha256 from 'js-sha256';
+
+import wrongSound from "./assets/audio/wrong.mp3";
+import trueSound from "./assets/audio/true.mp3";
 
 const SAVED_HASH = "bb9ebe362eb4dab784f16c6bf73a22f8ef8089a62c330d1d7045d47e0c02cf51"; // lười làm backend nên hash mật khẩu luôn ở đây, ai giỏi thì crack mà vào
 
-const hashPassword = async (password) => {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(password);
-  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-  return Array.from(new Uint8Array(hashBuffer))
-    .map((b) => b.toString(16).padStart(2, "0"))
-    .join("");
+const hashPassword = (password) => {
+  return sha256(password);
 };
+
 
 const AuthScreen = ({ onAuthSuccess }) => {
   const [input, setInput] = useState("");
@@ -22,16 +22,22 @@ const AuthScreen = ({ onAuthSuccess }) => {
     e.preventDefault();
     const inputHash = await hashPassword(input);
     if (inputHash === SAVED_HASH) {
-      onAuthSuccess();
+      const popSound = new Audio(trueSound);
+      popSound.play();
+      // delay 1s để phát âm thanh xong rồi mới chuyển trang
+      setTimeout(() => onAuthSuccess(), 1000);
     } else {
       setError(true);
       setInput("");
+      // phát nhạc
+      const wrongAudio = new Audio(wrongSound);
+      wrongAudio.play();
     }
   };
 
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100vh", background: "#f8f9fa" }}>
-      <h2>bạn cần nhập mật khẩu đề vào</h2>
+      <h2>bạn cần nhập mật khẩu để vào</h2>
       <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
         <input
           type="password"
