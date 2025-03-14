@@ -1,5 +1,7 @@
 import React from 'react';
 import "./section5.css";
+import Camera from './camera/Camera'
+
 
 import m83 from '../../assets/images/ptb_mini_asset/3.png';
 import two_circles from '../../assets/images/ptb_mini_asset/2 hình tròn gần lời thoại.png';
@@ -43,9 +45,17 @@ const Section5 = () => {
                 <img src={key} alt="Image 13" className="grid-item"/>
                 <img src={group_circle} alt="Image 14" className="grid-item"/>
                 <img src={heart3} alt="Image 15" className="grid-item"/>
+                <div className='camera-overlay'>
+                    <Camera onTakePhoto={
+                        image =>
+                            console.log(image, 'do whatever you want with the image')
+                    }/>
+                </div>
                 <div className="two-main-photo">
                     <div className='main-photo-1'>
                         <img src={frame_1} alt="Image 16" className='grid-item'/>
+                        <img src="blob:http://localhost:5173/b019efb5-afe0-4e06-a726-5bedc8e9000e" alt="Image 16" className='grid-item'/>
+                        {/* <img src="" alt="" /> */}
                         <div className='the-photo'></div>
                     </div>
                     <div className='main-photo-2'>
